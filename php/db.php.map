@@ -1,0 +1,15 @@
+class DB 
+Cette clas permet de se connecter avec une BDD configurer ou de tester la connetion.
+Si la BDD est configuré on peut intéragir avec la BDD.
+
+
+Attributs:
+pdo                 Variable de la connexion
+stmt
+classparam          Class comportant les éléments de connexion
+
+Méthodes:
+connect             Permet de ce connecter a la BDD avec la configuration validé
+test                Test la connexionn avec une BDD
+put                 Pour toutes les requetes qui non pas besoin de valeur de retour (INSERT,UPDATE)
+get                 Pour toutes les requetes qui retourne des données (SELECT)

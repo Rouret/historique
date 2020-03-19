@@ -5,20 +5,14 @@
     <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Colorlib Templates">
-    <meta name="author" content="Colorlib">
-    <meta name="keywords" content="Colorlib Templates">
-
     <!-- Title Page-->
     <title>Setup History</title>
-
     <!-- Font special for pages-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
-
     <!-- Main CSS-->
+    <link href="/vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet" media="all">
     <link href="/setup/css/setup.css" rel="stylesheet" media="all">
 </head>
-
 <body>
     <div class="page-wrapper bg-dark p-t-100 p-b-50">
         <div class="wrapper wrapper--w900">
@@ -55,18 +49,16 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    <button class="btn btn--radius-2 btn--blue-2" type="submit" id="submit">Try a connexion</button>
+                    <button class="btn btn--radius-2 btn--blue-2" type="submit" id="submit">Ok</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- Jquery JS-->
+    <?php
+        include_once("../components/modal.html");
+    ?>
     <script src="/vendor/jquery-3.4.1/jquery.js"></script>
+    <script src="/vendor/bootstrap-4.4.1-dist/js/bootstrap.min.js"></script>
     <script src="/setup/js/setup.js"></script>
-
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
+</body>
 </html>
-<!-- end document-->

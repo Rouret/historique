@@ -1,0 +1,11 @@
+Class File
+Permet de gerer un fichier en question 
+
+Attributs:
+file_url            Lien du fichier en question
+
+Methodes:
+readArray           Permet de lire une array dans un fichier
+writeArray          Permet d'écrite une array dans un fichier
+read                Permet de lire du texte dans un fichier
+write               Permet d'écrire du texte dans un fichier

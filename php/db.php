@@ -1,16 +1,23 @@
 <?php
+
+require_once "File.php";
 class DB {
     private $pdo = null;
     private $stmt = null;
-    
-    function __construct(){
-        
+    private $class_param;
+    function __construct(){   
+        $file=new File("../config/database.txt");
+        $temp=$file->read();
+        if(strlen($temp)!=0){
+            $this->class_param=$file->readArray();
+            $this->connect();
+        }
     }
     function connect(){
         try {
             $this->pdo = new PDO(
-                "mysql:host=localhost;dbname=historique;charset=utf8", 
-                "root", "", [
+                "mysql:host=".$this->class_param->host.";dbname=".$this->class_param->dbname.";charset=utf8", 
+                $this->class_param->username, $this->class_param->password, [
                 PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
                 PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
                 PDO::ATTR_EMULATE_PREPARES => false,
