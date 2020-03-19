@@ -1,6 +1,7 @@
 <?php
 
 require_once "File.php";
+require "../config/setup_database.php";
 class DB {
     private $pdo = null;
     private $stmt = null;
@@ -68,6 +69,27 @@ class DB {
         }
         $this->stmt = null;
         return $result;
+    }
+    function setup(){
+        //Cette varaible comporte toutes les requetes SQL a effectuer
+        $l=count($GLOBALS["db_setup"]);
+        $k=1;
+        foreach ($GLOBALS["db_setup"] as $value) {
+            try{
+                $result=$this->pdo->prepare($value);
+                $result->execute();
+                $k++;
+            }catch(PDOException $e){
+                error_log("Erreur or Database is already done");
+                break;
+            }
+        }
+        //Vérification si il y a une erreur
+        $key=false;
+        if($k==$l+1){
+            $key=true;
+        }
+        return $key;
     }
 }
 ?>
