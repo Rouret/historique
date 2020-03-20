@@ -44,11 +44,6 @@ class DB {
         }
         return $key;
     }
-    function __destruct(){
-        if ($this->stmt!==null) { $this->stmt = null; }
-        if ($this->pdo!==null) { $this->pdo = null; }
-    }
-
     function put($sql, $cond=null){
         try {
             $this->stmt = $this->pdo->prepare($sql);
@@ -90,6 +85,10 @@ class DB {
             $key=true;
         }
         return $key;
+    }
+    function __destruct(){
+        if ($this->stmt!==null) { $this->stmt = null; }
+        if ($this->pdo!==null) { $this->pdo = null; }
     }
 }
 ?>

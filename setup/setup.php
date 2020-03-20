@@ -1,3 +1,11 @@
+<?php
+    require_once "../php/File.php";
+    $file=new File("../config/database.txt");
+    $temp=$file->read();
+    if(strlen($temp)!=0){
+        header("Location: ../home");
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
