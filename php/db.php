@@ -86,6 +86,21 @@ class DB {
         }
         return $key;
     }
+    function isUserExist(){
+        $sql_verif="SELECT iduser FROM Users ";
+        $data_verif=$this->get($sql_verif);
+        $key=true;
+        if(count($data_verif)==0){
+            $key=false;
+        }
+        return $key;
+    }
+    function getUserId(){
+        return $this->get("SELECT max(iduser) as iduser FROM Users");
+    }
+    function getUserInfo(){
+        return $this->get("SELECT firstname,lastname,email,tel FROM Users");
+    }
     function __destruct(){
         if ($this->stmt!==null) { $this->stmt = null; }
         if ($this->pdo!==null) { $this->pdo = null; }

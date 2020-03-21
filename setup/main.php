@@ -25,6 +25,8 @@
     $db=new DB();
     if($db->setup()){
         echo "Done";
+        session_unset();
+        session_destroy();
         header("Location: ../home");
     }else{
         echo "Erreur or Database is already done";
