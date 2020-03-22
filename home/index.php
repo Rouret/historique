@@ -18,8 +18,11 @@
     <title>Historique <?php if(isset($_GET["screen"])){echo "| ".ucfirst($_GET["screen"]);}?>
 </title>
     <link href="/vendor/bootstrap-4.4.1-dist/css/bootstrap.min.css" rel="stylesheet">  
+    <!-- <link href="/vendor/bootstrap-4.4.1-dist/css/bootstrapValidator.min.css" rel="stylesheet">   -->
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <script src="/vendor/jquery-3.4.1/jquery.js"></script>
+    <!-- <script src="/vendor/jquery-3.4.1/plugin/jquery.transform.js"></script> -->
+    <!-- <script type="text/javascript" src="/vendor/bootstrap-4.4.1-dist/js/bootstrapValidator.min.js"></script> -->
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -30,7 +33,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <button class="btn btn-primary" id="menu-toggle">Menu</button>
             </nav>
-            <div class="container-fluid h-100">
+            <div class="container-fluid h-90">
             <?php
                 if(isset($_GET["screen"])){
                     include_once("./screens/".$_GET["screen"].".php");
@@ -45,6 +48,7 @@
         include_once("../components/modal.html");
     ?>
     <script src="/vendor/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/home/js/main.js"></script>
     <script>
         $("#menu-toggle").click(function(e) {
             $("#wrapper").toggleClass("toggled");

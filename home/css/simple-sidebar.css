@@ -145,3 +145,31 @@ body {
   margin-bottom: -15%;
   color: #495057;
 }
+.card{
+  transition: 0.25s;
+}
+.card:hover{
+  transition: 0.25s;
+  background: rgba(100, 100, 100, 0.2);
+}
+
+.btn-circle.add { 
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 70px; 
+  height: 70px; 
+  padding: 10px 16px; 
+  border-radius: 35px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xxx-large;
+} 
+.h-90{
+  height: 90%;
+}
+.rotate-90:hover{
+  transition: 0.25s;
+  transform: rotate(90deg);
+}

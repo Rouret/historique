@@ -45,13 +45,16 @@ class DB {
         return $key;
     }
     function put($sql, $cond=null){
+        $key=true;
         try {
             $this->stmt = $this->pdo->prepare($sql);
             $this->stmt->execute($cond);
         } catch (Exception $ex) {
-            die($ex->getMessage());
+            $key=false;
+            error_log("Error PUT DB ".$ex,0);
         }
         $this->stmt = null;
+        return $key;
     }
     function get($sql, $cond=null){
         $result = false;
@@ -60,7 +63,7 @@ class DB {
             $this->stmt->execute($cond);
             $result = $this->stmt->fetchAll();
         } catch (Exception $ex) {
-            die($ex->getMessage());
+            error_log("Error GET DB: ".$ex,0);
         }
         $this->stmt = null;
         return $result;
@@ -96,7 +99,7 @@ class DB {
         return $key;
     }
     function getUserId(){
-        return $this->get("SELECT max(iduser) as iduser FROM Users");
+        return $this->get("SELECT max(iduser) as iduser FROM Users")[0]["iduser"];
     }
     function getUserInfo(){
         return $this->get("SELECT firstname,lastname,email,tel FROM Users");
