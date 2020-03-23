@@ -53,11 +53,11 @@
     function displayProjects(data){
         str=""
         data.forEach(project => {
-            str+='<div class="card" id="project'+project.id+'" style="width: 18rem;"><div class="card-body">';
+            str+='<div class="card" style="width: 18rem;" id="project'+project.id+'"><div class="card-body">';
             str+='<h5 class="card-title">'+project.name+'</h5>';
             str+='<h6 class="card-subtitle mb-2 text-muted">'+project.compagny+'</h6>';
             str+='<p class="card-text">'+project.description+'</p>';
-            str+='<a href="'+project.website+'" class="card-link">Website</a>';
+            str+='<a href="'+project.website+'" target="_blank" class="card-link">Website</a><button type="button" class="btn btn-danger float-right remove" id="'+project.id+'">Remove</button>';
             str+='</div></div>';
         });
         str+='<button type="button" class="btn btn-primary btn-circle add rotate-90-anim" id="project-lauch-modal">+</button>';
@@ -139,9 +139,31 @@
     $("body").on("click","#project-lauch-modal",function(){
         $("#modal-add-project").modal();
     })
-
+    $("body").on("click",".remove",function(){
+        var id=this.id;
+        $.ajax({
+            url : '/api/project.php',
+            type : 'GET',
+            data : 'query=remove&id='+id,
+            dataType : 'html',
+            success : function(code_html, statut){
+                var data=JSON.parse(code_html);
+                if(data.hasOwnProperty("success")){
+                    $("#project"+id).remove();
+                    modal("Success","Projects has been deleted")
+                }else{
+                    modal("Error","Server message:"+data.error)
+                }
+                
+                console.log(data)
+            },         
+            error : function(resultat, statut, erreur){
+                modal("Error Query",erreur)
+            }        
+        });
+    })
     $("#project-add-button").on("click",function(){
         check()
     })
-
+   
 </script>

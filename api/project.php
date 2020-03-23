@@ -14,6 +14,16 @@
                 echo json_encode(array("error"=>"All params are not set"));
             }
             break;
+        case "remove":
+            if(isset($_GET["id"])){
+                $sql="DELETE FROM Projects WHERE Projects.idproject=".$_GET["id"];
+                if($db->put($sql)){
+                    echo json_encode(array("success"=>""));
+                }else{
+                    echo json_encode(array("error"=>"Internal error"));
+                }    
+            }
+            break;
         case "get":
             $sql="SELECT name,compagny,description,website,idproject as id FROM Projects";
             $data=$db->get($sql);
